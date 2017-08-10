@@ -7,8 +7,9 @@ namespace ConvClipboardPath
     {
         private static readonly string usage =
             @"Usage cmd [OPTION]" + "\n" +
-            @"-bs    '\'BackSlash to '/'Slash" + "\n" +
-            @"-hz    '\'hankaku to '￥'zenkaku" + "\n";
+            @"-bs    '\'BackSlash to '/'Slash" + "\n"  +
+            @"-hz    '\'hankaku to '￥'zenkaku" + "\n" +
+            @"-url   surround by '<' '>' \n";
 
         [STAThread]
         static void Main(string[] args)
@@ -26,6 +27,9 @@ namespace ConvClipboardPath
                     break;
                 case "-hz":
                     Clipboard.SetText(hankakuToZenkaku(Clipboard.GetText()));
+                    break;
+                case "-url":
+                    Clipboard.SetText("<" + Clipboard.GetText() + ">");
                     break;
             }
         }
